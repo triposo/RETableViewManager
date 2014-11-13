@@ -176,7 +176,11 @@
 {
     RETableViewSection *section = [self.mutableSections objectAtIndex:indexPath.section];
     RETableViewItem *item = [section.items objectAtIndex:indexPath.row];
-    
+
+    if ([item isKindOfClass:[UITableViewCell class]]) {
+        return (UITableViewCell *) item;
+    }
+
     UITableViewCellStyle cellStyle = UITableViewCellStyleDefault;
     if ([item isKindOfClass:[RETableViewItem class]])
         cellStyle = ((RETableViewItem *)item).style;
